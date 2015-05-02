@@ -1,15 +1,10 @@
-kita = [
-  "ｷﾀ━━━(ﾟ∀ﾟ).━━━!!!",
-  "ｷﾀ━━━━｡ﾟ+.ヽ(´∀`*)ﾉ ﾟ+.ﾟ━━━━!!",
-  "ｷﾀ━━☆ﾟ･*:｡.:(ﾟ∀ﾟ)ﾟ･*:..:☆━━━!!",
-  "ｷﾀ━ヽ(∀ﾟ )人(ﾟ∀ﾟ)人( ﾟ∀)人(∀ﾟ )人(ﾟ∀ﾟ)人( ﾟ∀)ノ━!!",
-  "ｷﾀ ━━━ヽ(´ω`)ﾉ ━━━!!"
-]
-
 module.exports = (robot) ->
 
   robot.hear /ちくわ大明神/, (res) ->
     res.send "誰だ今の"
 
   robot.hear /キター/, (res) ->
-    res.send res.random kita
+    fs = require 'fs'
+    data = fs.readFileSync 'scripts/kita.txt', 'utf8'
+    kita = data.split(/\n/)
+    res.send kita[Math.floor(Math.random() * kita.length)]
