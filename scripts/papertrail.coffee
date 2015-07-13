@@ -2,12 +2,11 @@ module.exports = (robot) ->
 
   robot.router.post '/papertrail/alert/:room', (req, res) ->
     room = req.params.room
-    #messages = if req.body.payload? then JSON.parse req.body.payload else req.body
-    messages = JSON.parse(req.body.payload)
+    messages = if req.body.payload? then JSON.parse req.body.payload else req.body
 
     for event in messages.events
       robot.messageRoom "#{room}", 
-        "id : #{event.id}\n
+        "[ALERT]id : #{event.id}\n
          source ip : #{event.source_ip}\n
          message : #{event.message}\n
          received_at : #{event.received_at}\n
