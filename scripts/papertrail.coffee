@@ -1,7 +1,7 @@
 module.exports = (robot) ->
 
   robot.router.post '/papertrail/alert', (req, res) ->
-    room_name = "monitor"
+    room = "monitor"
     message = if req.body.payload? then JSON.parse req.body.payload else req.body
 
     robot.messageRoom room, message
