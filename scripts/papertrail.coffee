@@ -12,5 +12,5 @@ module.exports = (robot) ->
     console.log "[message.events]"
     console.log message.events
 
-    robot.messageRoom "#{room}", "#{message}"
+    robot.messageRoom "#{room}", "#{message.min_id}"
     res.end "send #{room} #{message}"
