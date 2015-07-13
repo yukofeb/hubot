@@ -4,6 +4,7 @@ module.exports = (robot) ->
     room = req.params.room
     messages = if req.body.payload? then JSON.parse req.body.payload else req.body
 
-    for message in messages
-      robot.messageRoom "#{room}", "#{message.events.id}"
+    for event in messages.events
+      robot.messageRoom "#{room}", "#{event.id}"
+      console.log "#{event.id}
     res.end "OK"
