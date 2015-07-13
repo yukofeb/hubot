@@ -5,5 +5,5 @@ module.exports = (robot) ->
     message = if req.body.payload? then JSON.parse req.body.payload else req.body
     console.log message
 
-    robot.messageRoom room, message
+    robot.messageRoom "#{room}", "#{message}"
     res.end "send #{room} #{message}"
