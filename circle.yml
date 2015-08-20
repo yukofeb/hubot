@@ -11,4 +11,4 @@ deployment:
   staging:
     branch: master
     commands:
-      - sh script/deploy_production.sh
+      - sh scripts/deploy_production.sh
