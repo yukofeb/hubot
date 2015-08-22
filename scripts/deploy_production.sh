@@ -1,4 +1,5 @@
 #!/bin/sh
+set -ex
 
 export AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
 export AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
@@ -8,5 +9,5 @@ MYSECURITYGROUP="sg-97d4a6f2"
 MYIP=`curl -s ifconfig.me`
 
 aws ec2 authorize-security-group-ingress --group-id $MYSECURITYGROUP --protocol tcp --port 22 --cidr $MYIP/32
-cap production deploy
+bundle exec cap production deploy
 aws ec2 revoke-security-group-ingress --group-id $MYSECURITYGROUP --protocol tcp --port 22 --cidr $MYIP/32
