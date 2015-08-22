@@ -22,4 +22,5 @@ namespace :ec2 do
 
   before 'deploy:starting', 'ec2:authenticate:add_ip'
   after 'deploy:finished', 'ec2:authenticate:remove_ip'
+  after 'deploy:failed', 'ec2:authenticate:remove_ip'
 end
