@@ -1,7 +1,7 @@
 namespace :ec2 do
   namespace :authenticate do
     MYSECURITYGROUP = "sg-34fc6d51"
-    MYIP = `curl -s ifconfig.me`.chomp!
+    MYIP = `curl -s inet-ip.info`.chomp!
 
     task :add_ip do
       run_locally do
