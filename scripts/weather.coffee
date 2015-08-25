@@ -4,7 +4,7 @@
 # ・設定項目：通知時刻、地域
 # 　設定されていない場合は設定するよう通知する
 
-CronJob = require('cron').CronJob
+cronJob = require('cron').CronJob
 
 module.exports = (robot) ->
 
@@ -22,9 +22,9 @@ module.exports = (robot) ->
       .get() (err, res, body) ->
         data = JSON.parse body
         envelope = room: "bot"
-        robot.send envelope, "おおなめこの天気予報(*´艸｀*)\n#{year}/#{month}/#{date}の天気は#{data.weather[0].main}(#{data.weather[0].description})。\n気温は#{data.main.temp}度(最高#{data.main.temp_max}度、最低#{data.main.temp_min}度)。"
+        robot.send envelope, "【天気予報(#{year}/#{month}/#{date})】\n#今日の天気は#{data.weather[0].main}(#{data.weather[0].description})。\n気温は#{data.main.temp}度(最高#{data.main.temp_max}度、最低#{data.main.temp_min}度)。"
   
-  weathercron = new CronJob(
+  weathercron = new cronJob(
     cronTime: "45 * * * * *"
     onTick: ->
       informWeather()
