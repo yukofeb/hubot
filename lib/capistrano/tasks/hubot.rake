@@ -4,8 +4,6 @@ namespace :hubot do
     `#{cmd}`
     cmd = "sudo apt-get install bundler"
     `#{cmd}`
-    cmd = "bundle install --path vendor/bundler"
-    `#{cmd}`
   end
 
   task :start do
