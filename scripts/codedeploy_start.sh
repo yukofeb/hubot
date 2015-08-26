@@ -1,5 +1,5 @@
 #!/bin/bash
 
 cd /opt/hubot
-sudo bundle install
+sudo npm install
 node_modules/forever/bin/forever restartall
