@@ -3,3 +3,7 @@ os: linux
 files:
   - source: /
     destination: /opt/hubot
+hooks:
+  ApplicationStart:
+    - location: script/codedeploy_start.sh
+      timeout: 180
